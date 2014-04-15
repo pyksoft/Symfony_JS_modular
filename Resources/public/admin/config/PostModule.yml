@@ -1,0 +1,24 @@
+name 	: Post
+extends : Data
+
+labels :
+    title 		: { en : 'Posts', fr : 'Articles' }
+    name 		: { en : 'posts', fr : 'articles' }
+    noData  	: 
+        en : 'No post found'
+        fr : 'Aucun articles trouvé'
+    draft 		: { en : 'draft', fr : 'brouillon' }
+    published 	: { en : 'published', fr : 'publié' }
+    unpublished : { en : 'unpublished', fr : 'non-publié' }
+    
+    fields :
+        en :
+            title 	: 'title'
+            state 	: 'state'
+            content	: 'content'
+        fr :
+            title 	: 'titre'
+            state 	: 'état'
+            content	: 'contenu'
+
+icon : 'ion-pin'

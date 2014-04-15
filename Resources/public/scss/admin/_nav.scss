@@ -1,0 +1,57 @@
+// * * * ADMIN MENU * * * 
+#admin-menu{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background-color: rgba(255,255,255,0.05);
+	width:100%;
+	height: 100%;
+
+	> li{
+		a{
+			display: block;
+			padding: 0 $am-item-size/2;
+			line-height: $am-item-size;
+			border:none;
+			border-left:3px solid transparent;
+			color:#FFF;
+			text-decoration: none;
+			font-size: 14px;
+
+			&:hover,
+			&:active{
+				color:#FFF;
+				text-decoration: none;
+			}
+
+			i{
+				font-size: 1.8em ;
+				display: inline-block;
+				width: $am-item-size/2;
+				text-align: center;
+			}
+			.text{
+				display: inline-block;
+				margin-left: 10px;
+			}
+		}
+
+		&.current{
+			background-color: rgba(0,0,0,0.2);
+			a{
+				border-color:$am-current-bcolor;
+			}
+		}
+	}
+}
+
+// * * * ADMIN NAVBAR * * *
+#admin-navbar{
+	line-height: $admin-navbar-size;
+	background-color: rgba(255,255,255,0.05);
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	padding: 0 $admin-navbar-size / 2;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ModulaR-Admin",
+  "version": "0.0.0",
+  "authors": [
+    "eMaj-Fr <renaud.tertrais@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.0",
+    "bootstrap": "~3.1.1",
+    "angular": "~1.2.12",
+    "angular-route": "~1.2.13",
+    "restangular": "~1.3.1",
+    "ionicons": "~1.4.1"
+  }
+}

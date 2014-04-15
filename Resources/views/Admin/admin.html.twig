@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="modular-admin" ng-controller="mainController">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+
+	{# CSS LIB #}
+	<link rel="stylesheet" href="{{ asset('bundles/modular/lib/ionicons/css/ionicons.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('bundles/modular/gear/dist/css/gear.min.css') }}">
+
+	{# CSS ADMIN #}
+	<link rel="stylesheet" href="{{ asset('bundles/modular/css/admin.min.css') }}">
+
+
+	{# JS LIB #}
+	<script type="text/javascript" src="{{asset('bundles/modular/lib/jquery/dist/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('bundles/modular/gear/dist/js/gear.js')}}"></script>
+	<script type="text/javascript" src="{{asset('bundles/modular/lib/angular/angular.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('bundles/modular/lib/angular-route/angular-route.min.js')}}"></script>
+
+	{# JS ADMIN #}
+	<script type="text/javascript">
+		{% autoescape false %}
+		// load modules to JS in a Global var
+		MODULES = {{ modules | json_encode() }} ;
+		{% endautoescape %}
+	</script>
+	<script type="text/javascript" src="{{asset('bundles/modular/js/admin/admin.min.js') }}"></script>
+</head>
+<body>
+	
+	<div id="main">
+		
+		{# NAVBAR #}
+		<div id="admin-navbar">	
+			<strong>Admin</strong>
+		</div>
+
+		{# SIDEBAR LEFT #}
+		<div id="sidebar-left">
+			{# MENU #}
+			<ul id="admin-menu">
+				{% for m in modules %}
+					<li ng-class="isCurrentMenuItem( '/{{ m.labels.name }}' )">
+						<a href="#/{{ m.labels.name }}" >
+							<i class="{{ m.icon }}"></i>
+							<span class="text">{{ m.labels.title }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		{# MODULE VIEW #}
+		<div id="module-container" ng-view ng-controller="moduleController"></div>
+
+	</div>{# end #main #}
+
+</body>
+</html>

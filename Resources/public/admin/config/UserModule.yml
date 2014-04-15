@@ -1,0 +1,10 @@
+extends : Module
+
+labels :
+    title 	: { en : 'Users', fr : 'Utilisateurs' }
+    name 	: { en : 'users', fr : 'users' }
+    noData  : 
+        en : 'No users found'
+        fr : 'Aucun utilisateurs trouvé'
+
+icon : 'ion-person-stalker'

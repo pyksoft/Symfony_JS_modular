@@ -1,0 +1,8 @@
+modules :
+    - Post
+    - User
+
+lang : 
+    en : 'English'
+    fr : 'Français'
+

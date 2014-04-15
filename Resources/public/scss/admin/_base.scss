@@ -1,0 +1,53 @@
+*{ @include box-sizing(border-box); }
+
+body{
+	background-color: $dark-gray;
+	font-family: $ff-sans;
+	margin: 0;
+	padding: 0;
+}
+
+#main{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	padding-top:$admin-navbar-size;
+	color:#FFF;
+
+	#sidebar-left{
+		width:15%;
+		float:left;
+		height: 100%;
+		margin-right: 2%;
+	}
+
+	#module-container{
+		width: 81%;
+		float: right;
+		margin-right: 2%;
+	}
+}
+
+// @for $i from 1 through 10{
+// 	$m : $i*10;
+// 	.m#{$m},
+// 	.mh#{$m},
+// 	.ml#{$m}{
+// 		margin-left: $m+px;
+// 	}
+// 	.m#{$m},
+// 	.mh#{$m},
+// 	.mr#{$m}{
+// 		margin-right: $m+px;
+// 	}
+// 	.m#{$m},
+// 	.mv#{$m},
+// 	.mt#{$m}{
+// 		margin-top: $m+px;
+// 	}
+// 	.m#{$m},
+// 	.mv#{$m},
+// 	.mb#{$m}{
+// 		margin-bottom: $m+px;
+// 	}
+// }

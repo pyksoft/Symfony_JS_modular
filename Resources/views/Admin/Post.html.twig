@@ -1,0 +1,12 @@
+{% include 'modularBundle:Admin:moduleList.html.twig' with {
+	'module': module,
+	'columns': [
+		{'name':'title'},
+		{
+			'name':'state',
+			'type':'label'
+		},{
+			'name':'updated',
+			'type':'date'
+		}]
+} %}
