@@ -1,0 +1,96 @@
+@mixin hp-float( $float-preffix : "float" , $clear-float_class : "clear-float"){
+	.#{ $PX + $float-preffix +"-right"}{
+		float: right !important;
+	}
+	.#{ $PX + $float-preffix +"-left"}{
+		float: left !important;
+	}
+	.#{ $PX + $clear-float_class}{
+		clear:both !important;
+	}
+}
+
+@mixin hp-radius( $radius , $full : true ){
+	@include _checkList( $radius , "radius" );
+	@each $r in $radius{
+		@include _checkList( $r , "radius" );
+		$r-name : $PX + nth($r,1) ;
+		$r-size : nth($r,2) ;
+		
+		@if( $full ){
+			.#{$r-name},
+			.#{$r-name +"-top"},
+			.#{$r-name +"-left"},
+			.#{$r-name +"-top-left"}{
+				@include border-top-left-radius($r-size !important);
+			}
+			.#{$r-name},
+			.#{$r-name +"-top"},
+			.#{$r-name +"-right"},
+			.#{$r-name +"-top-right"}{
+				@include border-top-right-radius($r-size !important);
+			}
+			.#{$r-name},
+			.#{$r-name +"-bottom"},
+			.#{$r-name +"-left"},
+			.#{$r-name +"-bottom-left"}{
+				@include border-bottom-left-radius($r-size !important);
+			}
+			.#{$r-name},
+			.#{$r-name +"-bottom"},
+			.#{$r-name +"-right"},
+			.#{$r-name +"-bottom-right"}{
+				@include border-bottom-right-radius($r-size !important);
+			}
+		}@else{
+			.#{$r-name}{
+				@include border-radius($r-size !important);
+			}
+		}
+	}
+}
+
+@mixin hp-position(){
+	.fit{
+		max-width: 100%;
+	}
+}
+@mixin hp-margin( $min , $max , $step , $unit : px){
+	$i : $min ;
+	@while $i <= $max{
+		.#{"m" + $i},
+		.#{"mv"+ $i},
+		.#{"mt"+ $i},{
+			margin-top: $i+$unit;
+		}
+		.#{"m" + $i},
+		.#{"mv"+ $i},
+		.#{"mb"+ $i},{
+			margin-bottom: $i+$unit;
+		}
+		.#{"m" + $i},
+		.#{"mh"+ $i},
+		.#{"ml"+ $i},{
+			margin-left: $i+$unit;
+		}
+		.#{"m" + $i},
+		.#{"mh"+ $i},
+		.#{"mr"+ $i},{
+			margin-right: $i+$unit;
+		}
+		$i : $i + $step;
+	}
+}
+@mixin hp-bg-color($colors , $options : () ){
+	$options : map-merge((
+			"bg_class" : "bg"
+		),$options);
+
+	$bg-class : $PX + map-get( $options , "bg_class" );
+
+	@each $name,$color in $colors{
+		.#{$bg-class+"-"+$name}{
+			background-color: $color ;
+		}
+	}
+}

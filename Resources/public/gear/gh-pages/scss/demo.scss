@@ -1,0 +1,72 @@
+@import "compass";
+
+.demo-grid-cell{
+	background-color: #FFF;
+	min-height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border:1px solid rgba(0,0,0,.2);
+}
+
+.demo{
+	.preview{
+		background-color: #FFF;
+		border:1px solid rgba(0,0,0,.2);
+		@include border-radius(4px 4px 0 0);
+		padding:20px;
+		border-bottom: none;
+		&:before{
+			content : "DEMO";
+		}
+	}
+	.code pre{
+		@include border-radius(0 0 4px 4px);
+		code{
+			padding: 20px;
+		}
+	}
+
+	.code{
+		&:before{
+			content : "CODE";
+		}
+	}
+
+	.code,
+	.preview{
+		position: relative;
+		overflow: hidden;
+		&:before{
+			@include border-radius(0 0 4px 0);
+			background-color: rgba(0,0,0,.03);
+			top: 0;
+			left: 0;
+			padding:0 4px;
+			font-size: 12px;
+			position: absolute;
+			color:rgba(0,0,0,.5);
+			border-right:1px solid rgba(0,0,0,.15);
+			border-bottom:1px solid rgba(0,0,0,.15);
+		}
+	}
+}
+
+#doc .table{
+	font-size: 12px;
+}
+
+#img-logo {
+	position:absolute;
+	top:60px;
+	left:0;
+	right:0;
+	background-image: url("../img/gear-bg.jpg");
+	background-size: cover;
+	background-position: center 60% ;
+	height:350px;
+	max-height:400px;
+}
+
+#empty{
+	height:350px;
+}

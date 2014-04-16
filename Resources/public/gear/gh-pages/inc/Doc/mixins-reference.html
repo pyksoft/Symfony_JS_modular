@@ -1,0 +1,62 @@
+<h2>Mixins reference</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="m in mixins | orderBy:'name'">
+			<td><a href="#mixin-{{m.name}}">
+				<strong>
+					{{m.name}}(
+					<span ng-repeat="p in m.params" ng-if="!p.level">
+						<span ng-if="$index > 0"> , </span>
+						{{ p.name }}
+					</span> )
+				</strong>
+				</a></td>
+			<td>{{m.desc}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<div ng-repeat="m in mixins | orderBy:'name'" id="mixin-{{m.name}}">
+	<hr>
+	<h3>
+		{{m.name}}
+			(
+				<span ng-repeat="p in m.params" ng-if="!p.level">
+					<span ng-if="$index > 0"> , </span>
+					{{ p.name }}
+				</span>  
+			)
+	</h3>
+	<p>{{m.desc}}</p>
+	<h4>Params</h4>
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th></th>
+				<th>Description</th>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr ng-repeat="p in m.params">
+				<td>
+					{{ getLevelIndicator(p) }}
+					<strong>{{ p.name }}</strong>
+				</td>
+				<td>{{ p.type | uppercase}}</td>
+				<td>
+					<em ng-if="!p.required">Optional <span ng-if="p.default">(default : {{ p.default }})</span></em>
+					<strong ng-if="p.required">Required</strong>
+				</td>
+				<td>{{ p.desc}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,27 @@
+{
+  "name": "gear",
+  "version": "0.0.1",
+  "description": "An awesome front-end framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eMaj-Fr/gear.git"
+  },
+  "author": "eMaj-Fr, Loac-fr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eMaj-Fr/gear/issues"
+  },
+  "homepage": "http://emaj-fr.github.io/gear/",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "dependencies": {
+    "grunt-contrib-concat": "^0.3.0"
+  }
+}

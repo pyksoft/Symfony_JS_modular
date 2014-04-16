@@ -1,0 +1,7 @@
+@function _getColorFrom( $color , $if-lighter : $FONT-COLOR , $if-darker : #FFF , $step : #BBB ){
+	@if lightness( $color ) > lightness( $step ){
+		@return $if-lighter;
+	}@else{
+		@return $if-darker;
+	}
+}

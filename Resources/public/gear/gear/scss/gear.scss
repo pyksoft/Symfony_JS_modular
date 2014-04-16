@@ -1,0 +1,64 @@
+// * * * * * * * * * * * * * * * * * * * * *
+//
+// * * * * DEFAULT GLOBAL CONTANTS * * * * *
+//
+// YOU SHOULD NOT CHANGE THE GLOBALS BELOW
+// YOU CAN OVERRIDE THEM IN YOUR THEME
+//
+// * * * * * * * * * * * * * * * * * * * * *
+
+// PREFIX 
+$PREFIX 			: "" 	!default;
+	
+// * FONT *
+
+// FONT-COLOR
+$FONT-COLOR 		: #555 	!default;
+// FONT-SIZE
+$FONT-SIZE 			: 16px 	!default;
+// LINE-HEIGTH 
+$LINE-HEIGHT 		: 1.5 	!default;
+// FONT-FAMILY
+$FONT-FAMILY_SANS 	: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$FONT-FAMILY_SERIF 	: Georgia, Times serif, !default;
+$FONT-FAMILY_MONO	: monospace !default;
+$FONT-FAMILY 		: $FONT-FAMILY_SANS !default;
+
+// * DIMMENSIONS *
+
+// MAX-WITH
+$MAX-WIDTH 			: 960;
+// RADIUS
+$RADIUS 			: 4px !default;
+
+// GRID
+$GRID_COL-NUMBER 	: 12 ;
+$GRID_COL-GAP 		: 30px ;
+
+
+
+
+// * * * * * * * * * * * * * * * * * * * * 
+// YOU SHOULD NOT OVERRIDE THE CODE BELOW
+// * * * * * * * * * * * * * * * * * * * * 
+
+
+// PREFIX alias
+$PX 			: $PREFIX;
+@if $PX != "" { $PX  : $PX +"-" ; }
+
+// * * * IMPORTS * * *
+@import "functions";
+@import "utilities";
+@import "init";
+@import "responsive";
+@import "grid";
+@import "typographie";
+@import "list";
+@import "table";
+@import "button";
+@import "form";
+@import "nav";
+@import "panel";
+@import "code";
+@import "helpers";

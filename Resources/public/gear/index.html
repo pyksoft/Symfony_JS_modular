@@ -1,0 +1,62 @@
+<!doctype html>
+<html ng-app="gear-gh-pages">
+<head>
+	<meta charset="UTF-8">
+	<title>gear framework</title>
+
+	<!-- VIEWPORT FOR RESPONSIVE -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- LIB CSS -->
+	<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="lib/highlightjs/styles/monokai_sublime.css"> -->
+	<link rel="stylesheet" href="lib/highlightjs/styles/github.css">
+
+	<!-- LIB JS -->
+	<script src="http://localhost:35729/livereload.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<script src="lib/highlightjs/highlight.pack.js"></script>
+	<script src="lib/angular-highlightjs/angular-highlightjs.min.js"></script>
+	<script src="lib/jquery/jquery.min.js"></script>
+
+	<!-- GEAR -->
+	<link rel="stylesheet" href="dist/css/gear.css">
+	<script src="dist/js/gear.js"></script>
+
+	<!-- DEMO -->
+	<link rel="stylesheet" href="gh-pages/css/demo.css">
+	<script src="gh-pages/js/app.min.js"></script>
+
+</head>
+<body ng-controller="mainController">
+	<header>
+		<nav class="navbar">
+			<div class="container">
+				<ul class="nav">
+					<li><a href="#/" class="brand">gear</a></li>
+					<li ng-repeat="item in menu">
+						<a href="#/{{item.url}}" ng-class="isCurrentPath('/{{item.url}}')">{{item.title}}</a>
+					</li>
+				</ul>
+
+				<div class="nav float-right">
+					<a href="#" class="btn btn-sign round"><i class="fa fa-github"></i></a>
+					<a href="#" class="btn btn-sign round"><i class="fa fa-twitter"></i></a>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container" ng-view></div>
+
+	<footer>
+		<div class="container">
+			<hr>
+			<h5 class="text-center"><em>Designed and coded with <i class="fa fa-heart"></i></em></h5>
+		</div>
+	</footer>
+</body>
+</html>
+

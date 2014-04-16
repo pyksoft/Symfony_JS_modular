@@ -1,0 +1,167 @@
+// btn-color
+@mixin _btn-color( $color-bg , $color-font , $color-border ){	
+	// normal
+	background-color 	: $color-bg ;
+	color 				: $color-font ;
+	border-color 		: $color-border ;
+	// hover
+	&:hover{
+		background-color: darken( $color-bg , 5% );
+		border-color 	: darken( $color-border , 5% );
+		text-decoration : none; 
+	}
+	// active
+	&:active,
+	&.active{
+		background-color: darken( $color-bg , 10% ) ;
+		border-color 	: darken( $color-border , 10% ) ;
+		text-decoration : none; 
+	}
+}
+
+// btn-size
+@mixin _btn-size( $size-height , $size-font , $size-padding , $size-border ){
+	height 			: $size-height ;
+	border-width 	: $size-border ;
+	padding 		: $size-padding ;
+	font-size 		: $size-font ;
+	@include _line-height( $size-height );
+}
+
+// btn-sign-size
+@mixin _btn-sign-size( $size-height , $size-font , $size-padding , $size-border ){
+	height 			: $size-height ;
+	width  			: $size-height ;
+	font-size 		: round( $size-height / 1.42 ) ;
+	border-width 	: $size-border ;
+	padding 		: 0 ;
+	text-align 		: center ;
+	@include _line-height( $size-height );
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * *
+// YOU SHOULD NOT OVERRIDE THE MIXINS BELOW
+// * * * * * * * * * * * * * * * * * * * * *
+
+// btn-color-params
+@mixin _btn-color-params( $color ){
+	@include _checkList( $color , "color" );
+	$color-name 	: nth( $color , 1 );
+	$color-bg 		: nth( $color , 2 );
+	$color-font 	: "";
+	$color-border 	: "";
+	// font-color
+	@if length( $color ) < 3{
+		$color-font 		: _getColorFrom( $color-bg );
+	}@else{
+		$color-font 		: nth( $color , 3 );
+	}
+	// border-color
+	@if length( $color ) < 4{
+		$color-border 		: $color-bg ;
+	}@else{
+		$color-border 		: nth( $color , 4 );
+	}
+
+	@include _btn-color( $color-bg , $color-font , $color-border );
+}
+
+// btn-size-params
+@mixin _btn-size-params( $size , $callback : "_btn-size" ){
+	@include _checkList( $size , "size" );
+	$size-name 		: nth( $size , 1 );
+	$size-height 	: nth( $size , 2 );
+	$size-font 		: "";
+	$size-padding 	: "";
+	$size-border 	: "";
+
+	// font-size
+	@if length( $size ) < 3{
+		$size-font 	: $size-height / 2.5 ;
+	}@else{
+		$size-font 	: nth( $size , 3 );
+	}
+	// padding
+	@if length( $size ) < 4{
+		$size-padding 		: 0 $size-height / 1.5 ;
+	}@else{
+		$size-padding 		: nth( $size , 4 );
+	}
+	// border-width
+	@if length( $size ) < 5{
+		$size-border 		: 1px ;
+	}@else{
+		$size-border 		: nth( $size , 5 );
+	}
+	// call the callback
+	@if( $callback == "_btn-size"){
+		@include _btn-size( $size-height , $size-font , $size-padding , $size-border );
+	}@else if( $callback == "_btn-sign-size"){
+		@include _btn-sign-size( $size-height , $size-font , $size-padding , $size-border );
+	}
+}
+
+
+// btn main mixin
+@mixin btn( $colors , $sizes ,  $options : () ){
+
+	$options : map-merge( (
+			"radius"			: $RADIUS , 
+			"btn_class" 		: "btn" , 
+			"btn-sign_suffix" 	: "sign" 
+		), $options );
+
+	$radius 		: map-get( $options , "radius" );
+	$btn_class 		: $PX + map-get( $options , "btn_class");	
+	$btn-sign_class : $btn_class + '-' + map-get( $options , "btn-sign_suffix") ;
+	
+	/* default behavior */
+	.#{$btn_class},
+	.#{$btn-sign_class}{
+		cursor 			: pointer ;
+		display 		: inline-block ;
+		border-style 	: solid ;
+		text-decoration : none; 
+		@include border-radius( $radius );
+
+		// * COLORS *
+		// apply first color to default behavior
+		@include _btn-color-params( nth( $colors , 1 ) );
+		// create all the colors classes
+		@each $color in $colors{
+			$color-name 	: nth( $color , 1 );
+
+			&.#{$btn_class+"-"+$color-name}{
+				@include _btn-color-params( $color) ;
+			}
+		}
+	}
+	// * SIZE *
+	// .btn
+	.#{$btn_class}{
+		// apply first size to default behavior
+		@include _btn-size-params( nth( $sizes , 1 ) );
+		// create all the sizes classes
+		@each $size in $sizes{
+			$size-name 	: nth( $size , 1 );
+
+			&.#{$btn_class+"-"+$size-name}{
+				@include _btn-size-params( $size );
+			}
+		}
+	}
+	// .btn-sign
+	.#{$btn-sign_class}{
+		// apply first size to default behavior
+		@include _btn-size-params( nth( $sizes , 1 ) , "_btn-sign-size" );
+		// create all the sizes classes
+		@each $size in $sizes{
+			$size-name 	: nth( $size , 1 );
+
+			&.#{$btn_class+"-"+$size-name}{
+				@include _btn-size-params( $size , "_btn-sign-size" );
+			}
+		}
+	}
+}

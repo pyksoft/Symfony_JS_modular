@@ -1,0 +1,60 @@
+// * * * * * * * * * * * * * * * * * * * * *
+// YOU SHOULD NOT OVERRIDE THE MIXINS BELOW
+// * * * * * * * * * * * * * * * * * * * * *
+
+// grid
+@mixin grid( $breakpoints , $options : () ){
+	$options : map-merge( (
+			"cell_gap"			: $GRID_COL-GAP , 
+			"cell_number" 		: $GRID_COL-NUMBER , 
+			"cell_margin-bottom": $GRID_COL-GAP , 
+			"grid_class" 		: "grid" , 
+			"cell_class"		: "cell" , 
+			"grid-close_suffix" : "close" 
+		), $options );
+
+	$cell_gap 			: map-get( $options , "cell_gap" );
+	$cell_number 		: map-get( $options , "cell_number" );
+	$grid_class 		: $PX + map-get( $options , "grid_class" ) ;
+	$grid-close_class 	: $grid_class +"-"+ map-get( $options , "grid-close_suffix" ) ;
+	$cell_class 		: $PX + map-get( $options , "cell_class" ) ;
+
+	.#{$grid_class},
+	.#{$grid-close_class}{
+		&:after{
+			clear: both;
+			display: table;
+  			content: " ";
+		}
+	}
+	.#{$grid_class}{
+		margin-left 	: $cell_gap / -2 ;
+		margin-right 	: $cell_gap / -2 ;
+	}
+
+	@include _checkList( $breakpoints , "breakpoints" );
+
+	@each $breakpoint in $breakpoints{
+		@include _checkList( $breakpoint , "breakpoint" );
+
+		@media (min-width: nth($breakpoint,2)){
+			@for $i from 1 through $cell_number {
+				.#{$grid_class},
+				.#{$grid-close_class}{
+					& > .#{$cell_class +"-"+ nth($breakpoint,1) +"-"+ $i }{
+						width 			: ( $i * 100% ) / $cell_number ;
+						float 			: left ;
+					}
+				}
+				.#{$grid_class}{
+					& > .#{$cell_class +"-"+ nth($breakpoint,1) +"-"+ $i }{
+						padding-left  : $cell_gap / 2 ;
+						padding-right : $cell_gap / 2 ;
+						margin-bottom : $cell_gap;
+					}
+				}
+			}
+		}
+	}
+
+}
