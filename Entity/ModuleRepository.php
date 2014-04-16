@@ -23,9 +23,7 @@ class ModuleRepository extends EntityRepository
 
 	public function findArray($id){
 		$data = $this->find($id);
-		//if (!$data) throw $this->createNotFoundException('No data found with the id : ' . $id);
-        //return var_dump($data);
-        return [];
-
+		if (!$data) throw $this->createNotFoundException('No data found with the id : ' . $id);
+        return $data->getVars();
 	}
 }

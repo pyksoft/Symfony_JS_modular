@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Module
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="ModulaR\modularBundle\Entity\ModuleRepository")
+ * @ORM\MappedSuperclass
  */
 class Module
 {

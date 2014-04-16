@@ -7,19 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Data
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="ModulaR\modularBundle\Entity\DataModuleRepository")
+ * @ORM\MappedSuperclass
  */
 class DataModule extends Module
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    //protected $id;
 
     /**
      * @var string
@@ -41,17 +32,6 @@ class DataModule extends Module
      * @ORM\Column(name="id_user", type="integer")
      */
     protected $id_user = 0;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set title

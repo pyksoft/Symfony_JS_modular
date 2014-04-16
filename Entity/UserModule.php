@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class UserModule extends Module
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=100)
@@ -55,17 +46,6 @@ class UserModule extends Module
      * @ORM\Column(name="bio", type="text")
      */
     protected $bio;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set email

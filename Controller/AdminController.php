@@ -54,7 +54,7 @@ class AdminController extends Controller
         // $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
         return $this->render('modularBundle:Admin:'.$module.'-single.html.twig', array(
             //'data'    => json_encode($repo->findArray($id))
-            'data'    => json_encode($repo->findArray($id));
+            'data'    => json_encode($repo->findArray($id))
         ));
     }
 

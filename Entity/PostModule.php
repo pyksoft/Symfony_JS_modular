@@ -12,14 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PostModule extends DataModule
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
     /**
      * @var string
@@ -34,16 +26,6 @@ class PostModule extends DataModule
      * @ORM\Column(name="state", type="text")
      */
     protected $state = "draft";
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set content
