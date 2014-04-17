@@ -49,12 +49,10 @@ class AdminController extends Controller
      */
     public function moduleSingleAction($module,$id)
     {
-        //$em = $this->getDoctrine()->getEntityManager();
-        $repo = $this->getDoctrine()->getRepository('modularBundle:PostModule');
-        // $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
+        $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
         return $this->render('modularBundle:Admin:'.$module.'-single.html.twig', array(
-            //'data'    => json_encode($repo->findArray($id))
-            'data'    => json_encode($repo->findArray($id))
+            'module'  => AdminModel::getModule($module),
+            'data'    => $repo->findArray($id)
         ));
     }
 

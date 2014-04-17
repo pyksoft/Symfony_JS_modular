@@ -3,7 +3,8 @@ app.controller('mainController',['$scope' , '$location' , '$route' , '$http', fu
     
     // set "current" class to current menu item
     $scope.isCurrentMenuItem = function ( path ){
-       return $location.path() == path ? 'current' : '' ;
+		var rgx = new RegExp(path+"(\/[^ ]+)*");
+		return rgx.test( $location.path() ) ? 'current' : '' ;
     }
      
 }]);

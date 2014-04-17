@@ -1,2 +1,7 @@
-<h1>Post single</h1>
-{{ data | json_encode() }}
+{% extends "modularBundle::Admin/moduleSingle.html.twig" %}
+{% block content %}
+	<form action="" class="form">
+		<input type="text" ng-model="data.title">
+		<textarea ng-model="data.content"></textarea>	
+	</form>
+{% endblock %}

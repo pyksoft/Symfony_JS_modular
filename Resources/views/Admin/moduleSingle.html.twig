@@ -1,0 +1,23 @@
+<div ng-controller="moduleSingleController" ng-init="init( {{module|json_encode() }} , {{data|json_encode()}} )">
+	<div class="moduleSingle-toolbar mv10">	
+		<a href="#/{{ module.labels.name }}" class="btn btn-primary btn-min">
+			<i class="ion-ios7-undo"></i> {{ module.labels.title }}
+		</a>
+	</div>
+
+	<div class="moduleSingle-sidebar float-left">
+		<div class="panel">
+			<div class="panel-header">Actions</div>
+			<div class="panel-section">
+				<div class="btn btn-primary">save</div>
+				<div class="btn btn-alert">remove</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="moduleSingle-inner mt20">
+		{% block content %}
+
+		{% endblock %}
+	</div>
+</div>
