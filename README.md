@@ -55,7 +55,7 @@ Situé dans `Model/` et à ne pas confondre avec les modèles des entités, il s
 ### 1.5. Vues
 Toujours en conservant cette idée de modularité et d'héritage, j'ai créé des template **twig**. C'est le cas de `moduleList.html.twig` ou de `moduleSingle.html.twig`. Ceci permet de mettre les bases HTML de la vue en me servant des `{{ block }}`. Cela me permet aussi d'initialiser dicretement mes controleur angular *(voir ci dessous)* qui vont faire tout le travail de base.
 
-Comme pour la nomenclature des entités *(Data**Model**, Post**Module**...)*, la nomenclature des template twig obéisse à une nomenclature très précise afin d'aider le controlleur à choisir le bon template en fonction du module.
+Comme pour la nomenclature des entités (Data**Model**, Post**Module**...), la nomenclature des template twig obéisse à une nomenclature très précise afin d'aider le controlleur à choisir le bon template en fonction du module.
 
 ### 1.6. Forms
 J'ai essayé d'utiliser les **formulaires** Symfony pour le temps qu'ils permettent de gagner. Chaque **module** (entité) peut créer son formulaire qui sera envoyé à la vue `{module}Single.html.twig` automatiquement. Pour se faire, on doit ajouter une méthode statique à `Model/AdminForm` en respectant la nomenclature `{module}Form` :
