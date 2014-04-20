@@ -46,8 +46,8 @@ Il existe **2 controlleurs** :
 2. route Symfony correspondante : `/admin/get/{module}/{id}`
 3. controlleur (méthode) associé : `moduleGetAction( $module , $id )`
 
-### 1.3. Configuration et multilangue
-u
+### 1.3. Configuration et multilingue
+Après avoir été séduit par la concision du **YAML**, j'ai décidé de l'utiliser pour la configuration des modules (`Ressources/public/admin/config/`). Dans ces fichiers de configuration, on définit le nom du module, les différents labels, l'icône du menu. Les labels sont une tentative de création d'une administration multilingue. Pour l'extraction des données de ces fichiers yml, j'ai utilisé le **parser yaml** de Symfony.
 
 ### 1.4. Models
 Situé dans `Model/` et à ne pas confondre avec les modèles des entités, il s'agit de classes utilitaires avec des méthodes statiques.
@@ -101,14 +101,27 @@ La aussi j'ai souhaité mettre en place un système d'**héritage** (en m'appyan
 
 Le controlleur de base est `mainContolleur`. Il contiens des méthodes permettant de récupérer en **ajax** les données des modules (entités), d'insérer... Pour se faire il passe par un **service** : **moduleService**. C'est ce dernier qui envoi réellement les appel ajax. Il y a des requêtes qui ne passent pas par ce service : il s'agit des requêtes pour changer de page. En effet pour changer de page, on ne demande pas uniquement des données à **Symfony** mais aussi un template **Twig**.
 
-### 2.2. Vues
+### 2.2. Routes
+Pour l'instant, il n'y a que 2 type de routes possible :
 
+1. `#/admin/{module}`. Elle permet à la liste des entrées du module
+2. `#/admin/{module}/{id}`. Elle permet de modifier un entrée d'un module.
 
 ## 3. Difficultés rencontrées
-Elles sont nombreuse !
+Elles sont nombreuse !  Mais voici les principales :
+
+1. **Le passage de données de Symfony à AngularJS** (résolut). Capitale pour le bon fonctionnement de l'administration, ce passage de données a été plus compliqué que prévu. La première chose à laquelle on pense est un `json_encode()` des objets entités. Cependant un `json_encode()` ne contient que les propriétés publiques or les propriétés des entités sont privés. On pourrait les mettre en publique pour résoudre le problème mais on perdrait l'encapsulation des données. J'ai préféré créer une méthode dans le repository `DataModelRepository` qui je le rappelle est le repository duquelle tout les autres dérivent. La méthodes `getVars()` retourne tout les propriétés de l'entité. Cependant pour y accéder à partir du parent, j'ai du mettre les propriétés en `protected`.
+
+2. **Les formulaires Symfony** (non-résolut). Je n'ai pas réussi à faire fonctionner la vérification. Dans le cours on faisait mention de `$form->submit($request)`or il s'avère que cette méthode est dépréciée et qu'il faut utiliser `$form->handleRequest($request)`. Or ni l'une ni l'autre ne semble fonctionner.
+
+3. **Le cache Symfony** (résolut). Au début j'envoyait les données JSON à la vue à partir du controller **Symfony**. Puis j'envoyais les données à Angular en les affichant dans le template **twig**. Le problème est que les données n'étaient pas tout le temps actualiser car Symfony récupérait le fichier dans son cache. La solution est de chargé le template sans les données JSON puis de les récupérer en Ajax après.
+
+La plupart concernent la partie Symfony, ce qui me semble logique en considérant mon manque de connaissances du framework.
 
 ## Bilan
 
 Symfony
 Doctrine
 YAML
+
+Amélioration et futur du projet
