@@ -119,9 +119,7 @@ Elles sont nombreuse !  Mais voici les principales :
 La plupart concernent la partie Symfony, ce qui me semble logique en considérant mon manque de connaissances du framework.
 
 ## Bilan
+Malgré le fait que je n'ai pas eu le temps de finir le projet (malgré la rallonge de 2 semaine très appréciée), je suis très satisfait d'avoir pu approfondir mes connaissances sur **Symfony**. A présent je peux prétendre à des projets sur ce framework. Par ailleurs, la découverte de **Doctrine** et des possibilités de son ORM a été très instructif. Enfin la mise en place d'une application AngularJS et sa synchronisation avec Symfony a été passionnant.
 
-Symfony
-Doctrine
-YAML
-
-Amélioration et futur du projet
+## Avenir du projet
+Ce projet pourra me servir de base à un projet professionnel. Il faudra finir la partie user avec login, une partie média avec gestion d'images, un dashboard... Mais la base est la et me semble solide !
