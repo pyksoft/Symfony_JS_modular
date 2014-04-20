@@ -16,35 +16,35 @@ class UserModel extends DataModel
      *
      * @ORM\Column(name="email", type="string", length=100)
      */
-    protected $email;
+    protected $email = "";
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_role", type="integer")
      */
-    protected $role;
+    protected $role = "";
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=100)
      */
-    protected $firstname;
+    protected $firstname = "";
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=100)
      */
-    protected $lastname;
+    protected $lastname = "";
 
     /**
      * @var string
      *
      * @ORM\Column(name="bio", type="text")
      */
-    protected $bio;
+    protected $bio ="";
 
     /**
      * Set email
@@ -72,24 +72,24 @@ class UserModel extends DataModel
     /**
      * Set id_role
      *
-     * @param integer $idRole
+     * @param integer $role
      * @return User
      */
-    public function setIdRole($idRole)
+    public function setRole($role)
     {
-        $this->id_role = $idRole;
+        $this->role = $role;
 
         return $this;
     }
 
     /**
-     * Get id_role
+     * Get role
      *
      * @return integer 
      */
-    public function getIdRole()
+    public function getRole()
     {
-        return $this->id_role;
+        return $this->role;
     }
 
     /**

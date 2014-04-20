@@ -1,4 +1,4 @@
-<div class="grid" ng-controller="moduleSingleController" ng-init="init( {{module|json_encode() }} , {{data|json_encode()}} )">
+<div class="grid" ng-controller="moduleSingleController" ng-init="init( {{module|json_encode() }} , {{ id }} )">
 	<div class="moduleSingle-toolbar mv10">	
 		<a href="#/{{ module.labels.name }}" class="btn">
 			<i class="ion-ios7-undo"></i> {{ module.labels.title }}

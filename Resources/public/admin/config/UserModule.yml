@@ -1,4 +1,5 @@
-extends : Module
+name : User
+extends : Data
 
 labels :
     title 	: { en : 'Users', fr : 'Utilisateurs' }
@@ -8,11 +9,17 @@ labels :
         fr : 'Aucun utilisateurs trouvé'
     fields :
         en :
-            state   : 'state'
-            content : 'content'
+            email : email
+            role : role
+            firstname : firstname
+            lastname : lastname
+            bio : biographie
         fr :
-            state 	: 'état'
-            content	: 'contenu'
+            email : email
+            role : role
+            firstname : prénom
+            lastname : nom
+            bio : biographie
 
 icon : 'ion-person-stalker'
 

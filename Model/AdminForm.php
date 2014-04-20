@@ -26,7 +26,7 @@ class AdminForm{
 		return self::Render( $builder );
 	}
 
-	public static function UserForm(){
+	public static function UserForm( $builder ){
 		$builder
 			->add('email'		, 'text')
 			->add('firstname'	, 'text')
@@ -38,6 +38,6 @@ class AdminForm{
 				)))
 			->add('bio'			, 'textarea');
 			
-		return $builder;
+		return self::Render( $builder );
 	}
 }

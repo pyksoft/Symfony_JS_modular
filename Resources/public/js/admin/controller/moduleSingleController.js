@@ -2,9 +2,10 @@ app.controller('moduleSingleController',['$scope','$http','moduleService',functi
 
     
 
-    $scope.init = function(module , data ){
+    $scope.init = function(module , id ){
         $scope.setModule(module);
-        $scope.data = data;
+        $scope.id = id;
+        $scope.getData(id);
     }
 
     $scope.save = function(module,data){

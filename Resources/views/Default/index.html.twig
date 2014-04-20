@@ -1,11 +1,58 @@
 <!doctype html>
-<html>
+<html ng-app="modular-admin" ng-controller="mainController">
 <head>
 	<meta charset="UTF-8">
-	<title>Site front</title>
+	<title>Front</title>
+
+	{# CSS LIB #}
+	<link rel="stylesheet" href="{{ asset('bundles/modular/lib/ionicons/css/ionicons.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('bundles/modular/lib/bootstrap-flatly/flatly.min.css') }}">
+
+	{# CSS ADMIN #}
+	<link rel="stylesheet" href="{{ asset('bundles/modular/css/default.min.css') }}">
+
+
+	{# JS LIB #}
+	<script type="text/javascript" src="{{asset('bundles/modular/lib/jquery/dist/jquery.min.js')}}"></script>
+
 </head>
 <body>
-	<h1>Front</h1>
-	
+	<div class="container">
+		<header>
+			<div class="pull-right">
+				<a href="{{ app.request.getBaseURL() }}/admin/" class="btn btn-primary">Admin</a>
+			</div>
+			<div class="page-header">
+				<h1>Mon Blog <small>Demo du projet PHP/Javascript</h1>
+			</div>
+		</header>
+
+		{% for a in articles %}
+			<article class="panel panel-primary">
+				<header class="panel-heading">
+					<h3 class="panel-title">{{a.getTitle}} <small class="pull-right">{{ a.getCreated|date("m/d/Y") }}</small></h3>
+				</header>
+				<div class="panel-body">
+					{{a.getContent}}
+				</div>
+			</article>			
+		{% endfor %}
+		
+		<hr>
+
+		<ul class="pagination">
+  			<li><a href="{{ app.request.getBaseURL() }}/page/{{articles_prev}}">«</a></li>
+			
+			{% for i in 1..articles_total %}
+				
+				<li class="{% if i == articles_current %}active{% endif %}">
+					<a href="{{ app.request.getBaseURL() }}/page/{{i}}">{{i}}</a>
+				</li>
+ 
+			{% endfor %}
+			
+	  		<li><a href="{{ app.request.getBaseURL() }}/page/{{articles_next}}">»</a></li>
+		</ul>	
+	</div>
 </body>
 </html>

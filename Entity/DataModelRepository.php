@@ -23,7 +23,7 @@ class DataModelRepository extends EntityRepository
 
 	public function findArray($id){
 		$data = $this->find($id);
-		if (!$data) throw $this->createNotFoundException('No data found with the id : ' . $id);
+		if (!$data) return array();
         return $data->getVars();
 	}
 }

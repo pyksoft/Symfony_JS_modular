@@ -53,8 +53,9 @@ class AdminController extends Controller
     {
         $form = $this->getModuleForm($module);
 
-        return $this->render('modularBundle:Admin:'.$module.'-single.html.twig', array(
+        return $this->render('modularBundle:Admin:'.$module.'Single.html.twig', array(
             'module'  => AdminModel::getModule($module),
+            'id'      => $id,
             'form'    => $form->createView()
         ));
     }
@@ -67,7 +68,6 @@ class AdminController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
         return new Response(json_encode($repo->findArray($id)));
-
     }
 
     /**

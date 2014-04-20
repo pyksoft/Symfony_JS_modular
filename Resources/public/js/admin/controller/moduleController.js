@@ -15,9 +15,10 @@ app.controller('moduleController',['$scope' , '$location' , '$route' , '$timeout
         });
     }
 
-    $scope.getData = function(module){
+    $scope.getData = function(id , module){
         if(!module) module = $scope.module;
-        moduleService.get(module,function(data){
+        if(!id) id = $scope.id;
+        moduleService.get(id,module,function(data){
             $scope.data = data;
         });
     }

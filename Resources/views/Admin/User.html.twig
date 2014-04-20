@@ -1,1 +1,8 @@
-<h1>{{ module.labels.title }}</h1>
+{% include 'modularBundle:Admin:moduleList.html.twig' with {
+	'module': module,
+	'columns': [
+		{'name':'firstname'},
+		{'name':'lastname'},
+		{'name':'email'}
+		]
+} %}
