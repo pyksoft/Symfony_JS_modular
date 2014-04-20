@@ -10,15 +10,19 @@ labels :
     draft 		: { en : 'draft', fr : 'brouillon' }
     published 	: { en : 'published', fr : 'publié' }
     unpublished : { en : 'unpublished', fr : 'non-publié' }
-    
+
     fields :
         en :
             title 	: 'title'
-            state 	: 'state'
-            content	: 'content'
+            slug    : 'slug'
+            state   : 'state'
+            content : 'content'
         fr :
-            title 	: 'titre'
+            title   : 'titre'
+            slug    : 'identifiant'
             state 	: 'état'
             content	: 'contenu'
 
-icon : 'ion-pin'
+icon : ion-pin
+
+form : true

@@ -5,14 +5,7 @@ labels :
     title 	: { en : 'Module', fr : 'Module' }
     name 	: { en : 'module', fr : 'module' }
     noData  : 
-        en : 'No module found'
-        fr : 'Aucun module trouvé'
-    fields :
-        en :
-            updated : 'last update'
-            created : 'created date'
-        fr :
-            updated : 'dernière mise à jour'
-            created : 'date de création'
+        en : 'No data found'
+        fr : 'Aucune donnée trouvée'
 
 icon : 'ion-gear-b'

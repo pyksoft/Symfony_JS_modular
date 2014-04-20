@@ -11,20 +11,18 @@ body{
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	padding-top:$admin-navbar-size;
 	color:#FFF;
 
 	#sidebar-left{
-		width:15%;
-		float:left;
 		height: 100%;
-		margin-right: 2%;
+		padding-top:$admin-navbar-size;
+		margin-bottom: 0;
 	}
 
 	#module-container{
-		width: 81%;
-		float: right;
-		margin-right: 2%;
+		min-height: 100%;
+		padding-top:$admin-navbar-size;
+		margin-bottom: 0;
 	}
 }
 

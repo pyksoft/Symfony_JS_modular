@@ -4,11 +4,15 @@
 	background-color 	: $color-bg ;
 	color 				: $color-font ;
 	border-color 		: $color-border ;
+	&:visited{
+		color 				: $color-font ;
+	}
 	// hover
 	&:hover{
 		background-color: darken( $color-bg , 5% );
 		border-color 	: darken( $color-border , 5% );
 		text-decoration : none; 
+		color 				: $color-font ;
 	}
 	// active
 	&:active,
@@ -16,6 +20,7 @@
 		background-color: darken( $color-bg , 10% ) ;
 		border-color 	: darken( $color-border , 10% ) ;
 		text-decoration : none; 
+		color 				: $color-font ;
 	}
 }
 

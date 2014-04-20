@@ -5,11 +5,11 @@ namespace ModulaR\modularBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Module
+ * DataModel
  *
  * @ORM\MappedSuperclass
  */
-class Module
+class DataModel
 {
     /**
      * @var integer
@@ -100,5 +100,17 @@ class Module
 
     public function getVars(){
         return get_object_vars($this);
+    }
+
+    public function updateWithForm( $form ){       
+        $fields = $form->all();
+
+        foreach ($fields as $name => $field) {
+            $setter = "set".ucfirst($name);
+
+            if(method_exists($this, $setter))
+                $this->$setter($_POST[$name]);
+                //$this->$setter($field->getData());
+        }
     }
 }

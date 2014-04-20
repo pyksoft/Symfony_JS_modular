@@ -7,9 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Query;
 
 use ModulaR\modularBundle\Model\AdminModel;
+use ModulaR\modularBundle\Model\AdminForm;
 use ModulaR\modularBundle\Entity;
 
 class AdminController extends Controller
@@ -49,10 +51,11 @@ class AdminController extends Controller
      */
     public function moduleSingleAction($module,$id)
     {
-        $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
+        $form = $this->getModuleForm($module);
+
         return $this->render('modularBundle:Admin:'.$module.'-single.html.twig', array(
             'module'  => AdminModel::getModule($module),
-            'data'    => $repo->findArray($id)
+            'form'    => $form->createView()
         ));
     }
 
@@ -83,14 +86,42 @@ class AdminController extends Controller
      */
     public function moduleCreateAction($module)
     {
-        $module = "ModulaR\\modularBundle\\Entity\\".$module."Module";
-        $new = new $module();
+        $ModuleClass = "ModulaR\\modularBundle\\Entity\\".$module."Module";
+        $new = new $ModuleClass();
 
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($new);
         $em->flush();
-        return new Response('ok');
+        return new Response($new->getId());
     }
+
+    /**
+     * @Route("/admin/save/{module}/{id}", name="admin-module-save")
+     * @Template()
+     */
+    public function moduleSaveAction( Request $request , $module , $id )
+    {
+
+        $repo = $this->getDoctrine()->getRepository('modularBundle:'.$module.'Module');
+        $data = $repo->find($id) ; 
+        $form = $this->getModuleForm($module);
+
+        $form->submit($request);
+
+
+
+        //if( $form->isValid() ){
+            $data->updateWithForm( $form );
+            $data->setUpdated(new  \Datetime("now"));
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($data);
+            $em->flush();
+            return new Response("ok");
+
+
+    }
+
 
     /**
      * @Route("/admin/delete/{module}/{id}", name="admin-module-delete")
@@ -103,9 +134,23 @@ class AdminController extends Controller
         if (!$data) throw $this->createNotFoundException('No data found with the id : ' . $id);
 
         $em = $this->getDoctrine()->getEntityManager();
-        $data->remove();
+        $em->remove($data);
         $em->flush();
         return new Response('ok');
     }
+
+    /*
+     * getForm helper
+     */
+    private function getModuleForm( $module ){
+
+        $ModuleForm = $module."Form";
+        $ModuleClass = "ModulaR\\modularBundle\\Entity\\".$module."Module";
+
+        $form = AdminForm::$ModuleForm($this->createFormBuilder(new $ModuleClass() ));
+        
+        return $form->getForm();
+    }
+
 
 }

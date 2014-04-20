@@ -9,10 +9,9 @@ labels :
         fr : 'Aucune donnée trouvée'
     fields :
         en :
-            title 	: 'title'
-            slug 	: 'slug'
-        fr :
-            title 	: 'titre'
-            slug 	: 'identifiant'
+            created 	: 'created'
+            updated 	: 'last update'
 
-icon : 'ion-gear-b'
+        fr :
+            created 	: 'création'
+            updated 	: 'dernière mise à jour'

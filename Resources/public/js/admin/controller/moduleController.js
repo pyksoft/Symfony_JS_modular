@@ -1,5 +1,5 @@
 // * * * MAIN CONTROLLER * * *
-app.controller('moduleController',['$scope' , '$location' , '$route' , 'moduleService', function($scope , $location , $route , moduleService ){
+app.controller('moduleController',['$scope' , '$location' , '$route' , '$timeout','moduleService', function($scope , $location , $route , $timeout , moduleService ){
     
     $scope.setModule = function(module){
         $scope.module = module.name;
@@ -8,8 +8,10 @@ app.controller('moduleController',['$scope' , '$location' , '$route' , 'moduleSe
 
     $scope.create = function(module){
         if(!module) module = $scope.module;
-        moduleService.create(module,function(data){
-            $scope.getAllData();
+        moduleService.create(module,function(id){
+            $timeout(function(){
+                $scope.$apply(function() { $location.path("/"+$scope.labels.name+"/"+id);  })
+            });
         });
     }
 

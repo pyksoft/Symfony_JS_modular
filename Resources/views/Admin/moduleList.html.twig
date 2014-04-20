@@ -1,6 +1,6 @@
 <div class="module-data-list mt10" ng-init="init({{module | json_encode()}},{{columns | json_encode()}})" ng-controller="moduleListController">
 	<div class="toolbar">
-		<button ng-click="create()" class="btn btn-primary btn-min"><i class="ion-plus-circled"></i> Ajouter</button>
+		<button ng-click="create()" class="btn btn-primary"><i class="ion-plus-circled"></i> Ajouter</button>
 	</div>
 	<form action="" class="form mt20">
 		<input type="text" ng-model="search" placeholder="Recherche">
@@ -18,8 +18,8 @@
 				<td><input type="checkbox" ng-model="d.selected" ng-checked="d.selected || selectAll"></td>
 				<td ng-repeat="col in columns">{[ getListValue(d,col) ]}</td>
 				<td>
-					<a href="#/{[ labels.name ]}/{[ d.id ]}" class="btn-sign btn-min"><i class="ion-edit"></i></a>
-					<button class="btn-sign btn-alert btn-min ml10" ng-click="deleteData(d.id)"><i class="ion-trash-a"></i></button>
+					<a href="#/{[ labels.name ]}/{[ d.id ]}" class="btn-sign"><i class="ion-edit"></i></a>
+					<button class="btn-sign btn-alert ml10" ng-click="deleteData(d.id)"><i class="ion-trash-a"></i></button>
 				</td>
 			</tr>
 		</tbody>

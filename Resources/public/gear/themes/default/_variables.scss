@@ -1,9 +1,7 @@
 // Globals 
 
 // * * * VARS * * *
-
-	
-$color-default 	:  #FFF 	;
+$color-default 	:  #888 	;
 $color-primary 	:  #3498db 	;
 $color-success 	:  #57ad68 	; //#36b34c 	; //2ecc71
 $color-warning 	:  #f58134 	;
@@ -21,7 +19,7 @@ $colors :
 
 $size-micro 	: "micro" 		, 22px , 12px ;
 $size-min 		: "min" 		, 30px , 14px ;
-$size-default 	: "medium" 		, 40px ;
+$size-default 	: "medium" 		, 30px , 16px ;
 $size-max 		: "max" 		, 50px ;
 $size-fat 		: "fat" 		, 60px ;
 
@@ -54,4 +52,4 @@ $breakpoints :
 // import font
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300");
 $FONT-FAMILY 	: "Open Sans","Helvetica","courier","sans-serif";
-$FONT-COLOR 	: $color-negative ;
+$FONT-COLOR 	: #888 ;

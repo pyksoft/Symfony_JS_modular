@@ -29,7 +29,7 @@
 </head>
 <body>
 	
-	<div id="main">
+	<div id="main" class="grid">
 		
 		{# NAVBAR #}
 		<div id="admin-navbar">	
@@ -37,7 +37,7 @@
 		</div>
 
 		{# SIDEBAR LEFT #}
-		<div id="sidebar-left">
+		<div id="sidebar-left" class="cell-xs-2">
 			{# MENU #}
 			<ul id="admin-menu">
 				{% for m in modules %}
@@ -52,7 +52,7 @@
 		</div>
 
 		{# MODULE VIEW #}
-		<div id="module-container" ng-view ng-controller="moduleController"></div>
+		<div id="module-container" ng-view ng-controller="moduleController" class="cell-xs-10"></div>
 
 	</div>{# end #main #}
 
