@@ -11,9 +11,10 @@ J’ai souhaité profiter de l’occasion de ce projet pour approfondir le frame
 
 Ce projet initial à la foi passionnant et motivant, n’en demeure pas moins très ambitieux dans le cadre de cette réalisation. Ainsi, certains aspects ne seront pas totalement aboutis. Je fais le choix de « passer » sur quelques problématiques de sécurité afin de privilégié un rendu fonctionnel.
 
-J’espère que même si mon travail est perfectible et ne respecte pas totalement la consigne initiale, vous apprécierez ma prise de risque et la rigueur de mon ambition.
+J’espère que même si mon travail est perfectible et ne respecte pas totalement la consigne initiale, vous apprécierez ma prise de risque et l'originalité de l'architecture de mon code. Bonne lecture !
 
-## Symfony : Les entités
+## 1. Symfony
+### 1.1 Les entités
 
 Le maître mot de mon projet est « **modularité** ». J’ai pensé mes **entités Symphony** dans ce sens et voici le principe qui les régisse : chaque entité doit hériter de son **modèle**. Un modèle (pas au sens model MVC mais plus moule, schéma...) est une classe semblable à la classe entité sauf qu’elle n’est pas instanciable (utilisable comme entité). Elle sert de modèle (class mère) pour une class entité. On spécifie cela en retirant l’annotation `@ORM/entity` et `@ORM/table` et on précise `@ORM\MappedSuperclass`. 
 
@@ -31,7 +32,9 @@ Pour résumer voici comment on créer un module (une entité) **Post** :
 
 Pourquoi créer **PostModel** ? **PostModule** aurait pu étendre directement **DataModel**, oui mais c’est par souci de modularité. Si plus tard, je veux créer un module **Page** qui hérite de **Post**, je peux le faire car j’ai juste à créer un **PageModel** qui hérite de **PostModel** etc.
 
-## AngularJS : Les controleurs
+## 2. AngularJS
+
+### 2.1 Controleurs & Services
 
 **AngularJS** est un **framework MVC coté client** (tous les fichiers de sont dans `Ressources/public/js/admin/`). Un controller ici est une **fonction** qui va se charger d’administrer un partie du DOM. 
 
@@ -54,10 +57,14 @@ function mainController( $scope ){
 }
 ```
 
-La aussi j'ai souhaité mettre en place un système d'**héritage** afin encore une fois de faciliter l'intégration de module basé sur l'existant. Tout controller défini à l'intérieur de d'un autre controller récupères ses **variables** et **méthodes**. Ainsi, dans l'exemple du haut, si j'avais définit un controlleur dans le `<button>` il aurait hériter de `test` et de `message()`.
+La aussi j'ai souhaité mettre en place un système d'**héritage** (en m'appyant sur le comportement par défaut) afin encore une fois de faciliter l'intégration de module basé sur l'existant. Tout controller défini à l'intérieur d'un autre controller récupère ses **variables** et **méthodes**. Ainsi, dans l'exemple du haut, si j'avais définit un controlleur dans le `<button>` il aurait hériter de `test` et de `message()`.
 
 Le controlleur de base est `mainContolleur`. Il contiens des méthodes permettant de récupérer en **ajax** les données des modules (entités), d'insérer... Pour se faire il passe par un **service** : **moduleService**. C'est ce dernier qui envoi réellement les appel ajax. Il y a des requêtes qui ne passent pas par ce service : il s'agit des requêtes pour changer de page. En effet pour changer de page, on ne demande pas uniquement des données à **Symfony** mais aussi un template **Twig**.
+
+### 2.2. Vues
 
 
 ## Difficultés rencontrées
 Elles sont nombreuse !
+
+## Bilan
